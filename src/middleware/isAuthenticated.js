@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken'
 export const isAuthenticated = asyncHandler(async (req, res, next) => {
   try {
     const { token } = req.cookies
+     console.log(token)
     if (!token) {
       return next(new ErrorHandler('User is not authenticated', 400))
     }
@@ -21,7 +22,7 @@ export const isAuthenticated = asyncHandler(async (req, res, next) => {
 export const verifyUserOTP = asyncHandler(async (req, res, next) => {
   try {
     const { verifytoken } = req.cookies
-    console.log(verifytoken)
+  
     if (!verifytoken) {
       return next(new ErrorHandler('User is not authenticated', 400))
     }
