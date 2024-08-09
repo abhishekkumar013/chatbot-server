@@ -49,7 +49,7 @@ export const VerifyUser = asyncHandler(async (req, res, next) => {
     const options = {
       httpOnly: true,
       secure: true,
-       sameSite: 'none',
+      sameSite: 'none',
     }
     return res
       .status(200)
@@ -59,7 +59,21 @@ export const VerifyUser = asyncHandler(async (req, res, next) => {
     next(error)
   }
 })
-
+export const logout = asyncHandler(async (req, res, next) => {
+  try {
+    const options = {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+    }
+    return res
+      .status(200)
+      .clearCookie('token', options)
+      .json(new ApiResponse(200, {}, 'Logout Successfully'))
+  } catch (error) {
+    next(error)
+  }
+})
 export const myProfile = asyncHandler(async (req, res, next) => {
   try {
     const { id } = req.user
