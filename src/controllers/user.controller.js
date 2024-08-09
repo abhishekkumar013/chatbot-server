@@ -37,6 +37,7 @@ export const Login = asyncHandler(async (req, res, next) => {
 export const VerifyUser = asyncHandler(async (req, res, next) => {
   try {
     const { id } = req.user
+    console.log(id)
     const user = await User.findById(id)
     res.clearCookie('verifytoken', {
       httpOnly: true,
