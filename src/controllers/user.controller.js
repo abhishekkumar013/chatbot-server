@@ -24,6 +24,7 @@ export const Login = asyncHandler(async (req, res, next) => {
     const options = {
       httpOnly: true,
       secure: true,
+      sameSite: 'none',
     }
     return res
       .status(200)
@@ -42,6 +43,7 @@ export const VerifyUser = asyncHandler(async (req, res, next) => {
     res.clearCookie('verifytoken', {
       httpOnly: true,
       secure: true,
+      sameSite: 'none',
     })
     const token = user.generateToken()
     const options = {
