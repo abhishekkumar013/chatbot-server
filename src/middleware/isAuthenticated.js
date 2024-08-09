@@ -21,7 +21,7 @@ export const isAuthenticated = asyncHandler(async (req, res, next) => {
 export const verifyUserOTP = asyncHandler(async (req, res, next) => {
   try {
     const { verifytoken } = req.cookies
-    // console.log(verifytoken)
+    console.log(verifytoken)
     if (!verifytoken) {
       return next(new ErrorHandler('User is not authenticated', 400))
     }
